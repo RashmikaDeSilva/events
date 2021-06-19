@@ -26,9 +26,11 @@ function addRow(rowData) {
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
  
-    row.insertCell(0).innerHTML= rowData['description'];
-    row.insertCell(1).innerHTML= rowData['data1'];
-    row.insertCell(2).innerHTML= rowData['data2']; 
+    row.insertCell(0).innerHTML= rowData['date'];
+    row.insertCell(1).innerHTML= rowData['time'];
+    row.insertCell(2).innerHTML= rowData['title'];
+    row.insertCell(3).innerHTML= rowData['speaker'];
+    row.insertCell(4).innerHTML= rowData['link']; 
 }
 
 // loop and add all the data
@@ -42,7 +44,7 @@ function fillTable(tableData) {
 $(document).ready(function() {
     $.ajax({
         type: "GET",
-        url: "data.csv",
+        url: "data/data.csv",
         dataType: "text",
         success: function(data) {processData(data);}
      });
