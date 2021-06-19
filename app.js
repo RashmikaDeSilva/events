@@ -23,7 +23,7 @@ function addRow(rowData) {
     } else {
         typeTxt = 'Livestream';
     }
-    row.insertCell(4).innerHTML= '<a href=' + rowData['link'] + '>' + typeTxt + '</a>'; 
+    row.insertCell(4).innerHTML= '<a target="_blank" href=' + rowData['link'] + '>' + typeTxt + '</a>'; 
 }
 
 // loop and add all the data
