@@ -1,5 +1,6 @@
 // convert data to object
 function processData(data) {
+    console.log(data);
     console.log(JSON.parse(data));
     fillTable(JSON.parse(data)['data']);
 }
@@ -15,7 +16,14 @@ function addRow(rowData) {
     row.insertCell(1).innerHTML= rowData['time'];
     row.insertCell(2).innerHTML= rowData['title'];
     row.insertCell(3).innerHTML= rowData['speaker'];
-    row.insertCell(4).innerHTML= rowData['link']; 
+    // choosing the link type
+    var typeTxt = '';
+    if (rowData['registration'] == '1') {
+        typeTxt = 'Register';
+    } else {
+        typeTxt = 'Livestream';
+    }
+    row.insertCell(4).innerHTML= '<a href=' + rowData['link'] + '>' + typeTxt + '</a>'; 
 }
 
 // loop and add all the data
@@ -33,7 +41,8 @@ $(document).ready(function() {
     var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     var yyyy = today.getFullYear();
 
-    today = yyyy + '/' + mm + '/' + dd;
+    today = yyyy + '-' + mm + '-' + dd;
+    // console.log("https://drawing-room-disadv.000webhostapp.com/api/getData.php?date=" + today);
 
     $.ajax({
         type: "GET",
