@@ -1,7 +1,7 @@
 // convert data to object
 function processData(data) {
-    console.log(data);
-    console.log(JSON.parse(data));
+    // console.log(data);
+    // console.log(JSON.parse(data));
     fillTable(JSON.parse(data)['data']);
 }
 
