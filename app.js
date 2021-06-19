@@ -1,22 +1,7 @@
-// preprocessing csv data
-function processData(allText) {
-    var allTextLines = allText.split(/\r\n|\n/);
-    var headers = allTextLines[0].split(',');
-    var lines = [];
-
-    for (var i=1; i<allTextLines.length; i++) {
-        var data = allTextLines[i].split(',');
-        if (data.length == headers.length) {
-
-            var tarr = [];
-            for (var j=0; j<headers.length; j++) {
-                tarr[headers[j]] = data[j];
-            }
-            lines.push(tarr);
-        }
-    }
-
-    fillTable(lines);
+// convert data to object
+function processData(data) {
+    console.log(JSON.parse(data));
+    fillTable(JSON.parse(data)['data']);
 }
 
 // add a row to the table
@@ -42,9 +27,17 @@ function fillTable(tableData) {
 
 // loading the csv file
 $(document).ready(function() {
+    // get the current date
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '/' + mm + '/' + dd;
+
     $.ajax({
         type: "GET",
-        url: "data/data.csv",
+        url: "https://drawing-room-disadv.000webhostapp.com/api/getData.php?date=" + today,
         dataType: "text",
         success: function(data) {processData(data);}
      });
