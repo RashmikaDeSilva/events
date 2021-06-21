@@ -82,7 +82,7 @@ function processData(data) {
         finalArray.push({
             'date': workshop['date'],
             'time': workshop['time'],
-            'description': workshop['topic'],
+            'description': workshop['description'],
             'type': "Work Shop",
             'details': "Dummmy Details",
             'link_text': typeTxt,
