@@ -134,7 +134,7 @@ function addRow(rowData) {
     row.insertCell(2).innerHTML = rowData['time'] ? rowData['time'] : "TBA";
     row.insertCell(3).innerHTML = rowData['description'];
     row.insertCell(4).innerHTML = '<a target="_blank" href=' + rowData['link'] + '>' + rowData['link_text'] + '</a>';
-    row.insertCell(5).innerHTML = '<button type="button" onclick="">Additional Info</button>'
+    row.insertCell(5).innerHTML = '<button type="button" onclick="" class = "info_button">Additional Info</button>'
 }
 
 // loop and add all the data

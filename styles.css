@@ -1,0 +1,78 @@
+@font-face{
+    font-family: "roboto";
+    src: url('./fonts/RobotoCondensed-Regular.ttf');
+}
+
+body{
+    font-family:roboto;
+}
+
+.dropbtn {
+    background-color: rgb(232, 240, 238);
+    padding: 16px;
+    font-size: 16px;
+    border: 3px solid rgb(106, 177, 199);
+    border-radius: 10px;
+    outline: none
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition-duration: 200ms;
+}
+
+.dropdown-toggle{
+    display: none;
+}
+
+.dropdown-toggle:checked+div{
+    background-color:red;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #b6bbb6;}
+
+
+
+.topicTable {
+    
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.topicTable td,
+.topicTable th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+@media only screen and (max-width: 500px) {
+    .dropdown-toggle:checked+div{
+        /* background-color:rgb(0, 217, 255); */
+    }
+}
