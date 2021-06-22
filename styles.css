@@ -60,15 +60,19 @@ body{
     width: 100%;
 }
 
+tr {
+    background:rgb(204, 211, 212);
+}
+
 .topicTable td,
 .topicTable th {
-    border: 1px solid black;
+    /* border: 1px solid rgb(98, 104, 105); */
     text-align: left;
     padding: 8px;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #e8f0f5;
 }
 
 @media only screen and (max-width: 500px) {
