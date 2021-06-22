@@ -41,7 +41,7 @@ body {
   display: inline-block;
   position: absolute;
   left: 0;
-  bottom: -120px;
+  bottom: -180px;
   opacity: 0;
   transform: scale(0.8) translate3d(-20px, 0px, 0);
   transition: opacity 0.1s cubic-bezier(0.5, 2, 0.5, 0.75), transform 0.3s cubic-bezier(0.5, 2, 0.5, 0.75);
