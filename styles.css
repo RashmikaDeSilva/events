@@ -1,7 +1,12 @@
 @font-face{
     font-family: "roboto";
-    src: url('../fonts/RobotoCondensed-Regular.ttf');
+    src: url('./fonts/RobotoCondensed-Regular.ttf');
 }
+
+body{
+    font-family:roboto;
+}
+
 .dropbtn {
     background-color: rgb(232, 240, 238);
     padding: 16px;
@@ -48,11 +53,26 @@
 .dropdown:hover .dropbtn {background-color: #b6bbb6;}
 
 
+
+.topicTable {
+    
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.topicTable td,
+.topicTable th {
+    border: 1px solid black;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
 @media only screen and (max-width: 500px) {
     .dropdown-toggle:checked+div{
         /* background-color:rgb(0, 217, 255); */
     }
 }
-
-
-
