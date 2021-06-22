@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./styles.css">
-    </head>
+    <link rel="stylesheet" href="./dropddown.css">
+</head>
 
 <body>
-    
+
     <div>
-        
+        <img src="./images/logo-2.png" alt="">
         <label>Events Calendar</label>
     </div>
 
-    <table >
+    <table>
         <colgroup>
             <col span="1" style="width: 80%">
             <col span="1" style="width: 10%">
@@ -20,10 +22,13 @@
         <tbody>
             <tr>
                 <!-- Browse categories -->
-                <td>
-                    
+                <!-- <td>
                     <div class="dropdown">
-                        <button class="dropbtn"><h3 style="font-family: 'Times New Roman'; font-size: 20px;">Categories</h3></button>
+                        <input id="category" type="checkbox" class="dropdown-toggle">
+                        <div class="dropbtn">
+                            <label for="category"> Categories</label>
+                        </div>
+
                         <div class="dropdown-content">
                           <a onclick='return allData()'>All</a>
                           <a onclick='return researchSeminar()'>Research Seminars</a>
@@ -32,18 +37,40 @@
                           <a onclick='return workshops()'>Workshops</a>
                         </div>
                       </div>
-                </td>        
+                </td>         -->
 
-                
+                <div class="container">
+                    <div class="dropdown">
+                        <button>Select</button>
+                        <ul class="dropdown-options">
+                            <li class="option">
+                             <a onclick='return allData()'>All</a>   
+                            </li>
+                            <li class="option">
+                              <a onclick='return researchSeminar()'>Research Seminars</a>  
+                            </li>
+                            <li class="option">
+                              <a onclick='return conferences()'>Conferences</a>  
+                            </li>
+                            <li class="option">
+                               <a onclick='return competitions()'>Competitions</a> 
+                            </li>
+                            <li class="option">
+                               <a onclick='return workshops()'>Workshops</a> 
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
             </tr>
-            
+
         </tbody>
-    </table>  
-    
+    </table>
+
     <p></p>
 
-    <table id="eventTable" class="topicTable" align="center" >
-       
+    <table id="eventTable" class="topicTable" align="center">
+
         <tbody>
             <tr>
                 <th>
@@ -60,11 +87,11 @@
 
                 <th>
                     <h2 style="text-align:center;">Event Description</h2>
-                </th>     
+                </th>
 
                 <th>
                     <h2 style="text-align:center;">Link</h2>
-                </th>                           
+                </th>
 
                 <th>
                     <h2 style="text-align:center;">Details</h2>
@@ -77,19 +104,20 @@
 
     <style>
         .topicTable {
-          font-family: 'Times New Roman', Times, serif;
-          border-collapse: collapse;
-          width: 100%;
+            font-family: 'Times New Roman', Times, serif;
+            border-collapse: collapse;
+            width: 100%;
         }
-        
-        .topicTable td, .topicTable th {
-          border: 1px solid black;
-          text-align: left;
-          padding: 8px;
+
+        .topicTable td,
+        .topicTable th {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
         }
-        
+
         tr:nth-child(even) {
-          background-color: #dddddd;
+            background-color: #dddddd;
         }
     </style>
 
@@ -98,6 +126,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src='app.js'></script>
+<script src='dropdown.js'></script>
 
 
 </html>
