@@ -125,9 +125,8 @@ function processData(data) {
 }
 
 // add a row to the table
-function addRow(rowData) {
+function addRow(rowData, colType) {
     var table = document.getElementById("eventTable");
-
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
 
@@ -156,6 +155,8 @@ function addEmptyRow() {
 // loop and add all the data
 function fillTable(tableData) {
     let refWeekNo = 0;
+    // selecting the col type (odd or even)
+    let count = 0;
 
     // get the first week of the table
     if (tableData.length > 0) {
@@ -171,8 +172,8 @@ function fillTable(tableData) {
             addEmptyRow();
             refWeekNo = tmpWeek;
         }
-
-        addRow(tableRow);
+        count++;
+        addRow(tableRow, count%2);
     });
 }
 
