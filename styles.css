@@ -4,6 +4,7 @@
 }
 
 body{
+    width: 100%;
     font-family:roboto;
     margin:0;    
 }
@@ -56,16 +57,18 @@ body{
 
 
 .heading{
-    display: grid;
+    display: flex;
+    width:100vw;
     background-color:rgb(223, 223, 223);
-    grid-template-columns:auto 56%;
+
     color: rgb(110, 135, 146);
-    align-items: center;
     padding-top: 3%;
     padding-bottom: 3%;
+    align-items: start;
 }
 
 .heading label{
+    padding-left:20%;
     font-size: 35px;
 }
 
@@ -74,6 +77,7 @@ body{
 .topicTable {
     border-collapse: collapse;
     width: 100%;
+    overflow:scroll;
 }
 
 tr {
@@ -92,12 +96,25 @@ tr:nth-child(even) {
     background-color: #e8f0f5;
 }
 
-@media only screen and (max-width: 500px) {
-    .dropdown-toggle:checked+div{
-        /* background-color:rgb(0, 217, 255); */
+@media only screen and (max-width: 750px) {
+   .heading{
+       width: 100%;
+       padding-top: 10%;
+        flex-direction: column;
+        overflow: hidden;
     }
+   
+   .heading label {
+    padding: 0;
+    margin-top: 1%;   
+   }
 }
 
 .table_div{
+    /* overflow:scroll; */
     padding: 10px;
+}
+
+.topicTable_div{
+    overflow:scroll;
 }
