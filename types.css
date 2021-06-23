@@ -1,7 +1,9 @@
 
 .type{
+    
     padding:0 !important;    
     background-color:rgb(0, 0, 0);
+    animation: color_anim 500ms linear ;
 }
 
 .type.WorkShop{
@@ -19,3 +21,13 @@
 .type.Competition{
     background-color:rgb(204, 207, 16);
 }
+
+@keyframes color_anim {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+

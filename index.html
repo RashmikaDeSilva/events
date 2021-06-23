@@ -11,82 +11,90 @@
 
 <body>
 
-    <div>
+    <div class = "heading" >
         <img src="./images/logo-2.png" alt="">
         <label>Events Calendar</label>
     </div>
 
-    <table>
-        <colgroup>
-            <col span="1" style="width: 80%">
-            <col span="1" style="width: 10%">
-        </colgroup>
-        <tbody>
-            <tr>
-                <div class="container">
-                    <div class="dropdown">
-                        <button>Categories</button>
-                        <ul class="dropdown-options">
-                            <li class="option">
-                             <a onclick='return allData()'>All</a>   
-                            </li>
-                            <li class="option">
-                              <a onclick='return researchSeminar()'>Research Seminars</a>  
-                            </li>
-                            <li class="option">
-                              <a onclick='return conferences()'>Conferences</a>  
-                            </li>
-                            <li class="option">
-                               <a onclick='return competitions()'>Competitions</a> 
-                            </li>
-                            <li class="option">
-                               <a onclick='return workshops()'>Workshops</a> 
-                            </li>
-                        </ul>
+    <br><br><br><br>    
+    
+    <div class="table_div">
+        <table>
+            <colgroup>
+                <col span="1" style="width: 80%">
+                <col span="1" style="width: 10%">
+            </colgroup>
+            <tbody>
+                <tr>
+                    <div class="container">
+                        <div class="dropdown">
+                            <button>Categories</button>
+                            <ul class="dropdown-options">
+                                <li class="option">
+                                 <a onclick='return allData()'>All</a>   
+                                </li>
+                                <li class="option">
+                                  <a onclick='return researchSeminar()'>Research Seminars</a>  
+                                </li>
+                                <li class="option">
+                                  <a onclick='return conferences()'>Conferences</a>  
+                                </li>
+                                <li class="option">
+                                   <a onclick='return competitions()'>Competitions</a> 
+                                </li>
+                                <li class="option">
+                                   <a onclick='return workshops()'>Workshops</a> 
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-            </tr>
-        </tbody>
-    </table>
+                </tr>
+            </tbody>
+        </table>
+    
+        <table id="eventTable" class="topicTable" align="center">
 
-    <p></p>
+            <tbody>
+                <tr>
+                    <th>
+                        
+                    </th>
+                    <th>
+                        <label >Type </label>   
+                    </th>
+    
+                    <th>
+                        <label >Date</label>
+                    </th>
+    
+                    <th>
+                        <label >Time (IST)</label>
+                    </th>
+    
+                    <th>
+                        <label >Event Description </label>
+                    </th>
+    
+                    <th>
+                        <label >Link</label>
+                    </th>
+    
+                    <th>
+                        <label >Details</label>
+                    </th>
+                </tr>
+    
+            </tbody>
+    
+        </table>
+    
 
-    <table id="eventTable" class="topicTable" align="center">
+    </div>
+    
+    
+    
 
-        <tbody>
-            <tr>
-                <th>
-                    
-                </th>
-                <th>
-                    <label >Type </label>   
-                </th>
-
-                <th>
-                    <label >Date</label>
-                </th>
-
-                <th>
-                    <label >Time (IST)</label>
-                </th>
-
-                <th>
-                    <label >Event Description </label>
-                </th>
-
-                <th>
-                    <label >Link</label>
-                </th>
-
-                <th>
-                    <label >Details</label>
-                </th>
-            </tr>
-
-        </tbody>
-
-    </table>
-
+    
     
 
 </body>
