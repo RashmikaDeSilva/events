@@ -84,6 +84,8 @@ tr {
     background:rgb(204, 211, 212);
 }
 
+
+
 .topicTable td,
 .topicTable th {
     /* border: 1px solid rgb(98, 104, 105); */
@@ -94,6 +96,14 @@ tr {
 
 tr:nth-child(even) {
     background-color: #e8f0f5;
+}
+
+tr:hover :first-child{
+    opacity: 0.5;
+}
+
+tr:nth-child(even):hover {
+    background:rgb(200, 217, 219);
 }
 
 @media only screen and (max-width: 750px) {
