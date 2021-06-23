@@ -67,6 +67,7 @@ tr {
 .topicTable td,
 .topicTable th {
     /* border: 1px solid rgb(98, 104, 105); */
+    
     text-align: left;
     padding: 8px;
 }

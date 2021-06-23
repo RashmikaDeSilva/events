@@ -129,12 +129,17 @@ function addRow(rowData) {
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
 
-    row.insertCell(0).innerHTML = rowData['type'];
-    row.insertCell(1).innerHTML = rowData['date'];
-    row.insertCell(2).innerHTML = rowData['time'] ? rowData['time'] : "TBA";
-    row.insertCell(3).innerHTML = rowData['description'];
-    row.insertCell(4).innerHTML = '<a target="_blank" href=' + rowData['link'] + '>' + rowData['link_text'] + '</a>';
-    row.insertCell(5).innerHTML = '<button type="button" onclick="" class = "info_button">Additional Info</button>'
+    row.insertCell(0).innerHTML = ''
+    row.children[0].className = 'type '+  rowData['type'].replaceAll(' ','');
+    console.log(rowData['type'].replaceAll(' ',''))
+    
+
+    row.insertCell(1).innerHTML = rowData['type'];  
+    row.insertCell(2).innerHTML = rowData['date'];
+    row.insertCell(3).innerHTML = rowData['time'] ? rowData['time'] : "TBA";
+    row.insertCell(4).innerHTML = rowData['description'];
+    row.insertCell(5).innerHTML = '<a target="_blank" href=' + rowData['link'] + '>' + rowData['link_text'] + '</a>';
+    row.insertCell(6).innerHTML = '<button type="button" onclick="" class = "info_button">Additional Info</button>'
 }
 
 // loop and add all the data
