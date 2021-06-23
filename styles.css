@@ -6,7 +6,7 @@
 body{
     width: 100%;
     font-family:roboto;
-    margin:0;    
+    margin:0;  
 }
 
 
@@ -88,8 +88,6 @@ tr {
 
 .topicTable td,
 .topicTable th {
-    /* border: 1px solid rgb(98, 104, 105); */
-    
     text-align: left;
     padding: 8px;
 }
@@ -102,9 +100,9 @@ tr:hover :first-child{
     opacity: 0.5;
 }
 
-tr:nth-child(even):hover {
+/* tr:nth-child(even):hover {
     background:rgb(200, 217, 219);
-}
+} */
 
 @media only screen and (max-width: 750px) {
    .heading{
