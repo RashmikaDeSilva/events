@@ -120,6 +120,8 @@ function processData(data) {
     // console.log(finalArray);
 
     fillTable(finalArray);
+    document.getElementById("loading").style.display = 'none'
+    document.getElementById("category").style.opacity = 1;
 }
 
 // add a row to the table
@@ -218,7 +220,20 @@ $(document).ready(function () {
         }
     });
 
-    setTimeout(()=>{
-        document.getElementById("loading").style.display = 'none'
-    }, 1000)
+   
 });
+
+
+$(document).ready(function() {
+  
+    $(".selLabel").click(function () {
+      $('.dropdown').toggleClass('active');
+    });
+    
+    $(".dropdown-list li").click(function() {
+      $('.selLabel').text($(this).text());
+      $('.dropdown').removeClass('active');
+      $('.selected-item p span').text($('.selLabel').text());
+    });
+    
+  });
