@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="./dropddown.css">
     <link rel="stylesheet" href="./infobutton.css">
     <link rel="stylesheet" href="./types.css">
+    <script src="https://kit.fontawesome.com/f1c65451e4.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-    <div class = "heading" >
+    <div class="heading">
         <img src="./images/logo-2.png" alt="">
         <label>Events Calendar</label>
     </div>
 
-    <br><br><br><br>    
-    
+    <br><br><br><br>
+
     <div class="table_div">
         <table>
             <colgroup>
@@ -31,19 +32,19 @@
                             <button>Categories</button>
                             <ul class="dropdown-options">
                                 <li class="option">
-                                 <a onclick='return allData()'>All</a>   
+                                    <a onclick='return allData()'>All</a>
                                 </li>
                                 <li class="option">
-                                  <a onclick='return researchSeminar()'>Research Seminars</a>  
+                                    <a onclick='return researchSeminar()'>Research Seminars</a>
                                 </li>
                                 <li class="option">
-                                  <a onclick='return conferences()'>Conferences</a>  
+                                    <a onclick='return conferences()'>Conferences</a>
                                 </li>
                                 <li class="option">
-                                   <a onclick='return competitions()'>Competitions</a> 
+                                    <a onclick='return competitions()'>Competitions</a>
                                 </li>
                                 <li class="option">
-                                   <a onclick='return workshops()'>Workshops</a> 
+                                    <a onclick='return workshops()'>Workshops</a>
                                 </li>
                             </ul>
                         </div>
@@ -51,51 +52,54 @@
                 </tr>
             </tbody>
         </table>
-    
-        <table id="eventTable" class="topicTable" align="center">
 
-            <tbody>
-                <tr>
-                    <th>
-                        
-                    </th>
-                    <th>
-                        <label >Type </label>   
-                    </th>
-    
-                    <th>
-                        <label >Date</label>
-                    </th>
-    
-                    <th>
-                        <label >Time (IST)</label>
-                    </th>
-    
-                    <th>
-                        <label >Event Description </label>
-                    </th>
-    
-                    <th>
-                        <label >Link</label>
-                    </th>
-    
-                    <th>
-                        <label >Details</label>
-                    </th>
-                </tr>
-    
-            </tbody>
-    
-        </table>
-    
+        <div class = "topicTable_div">
+            <table id="eventTable" class="topicTable" align="center">
+
+                <tbody>
+                    <tr>
+                        <th>
+
+                        </th>
+                        <th>
+                            <label>Type </label>
+                        </th>
+
+                        <th>
+                            <label>Date</label>
+                        </th>
+
+                        <th>
+                            <label>Time (IST)</label>
+                        </th>
+
+                        <th>
+                            <label>Event Description </label>
+                        </th>
+
+                        <th>
+                            <label>Link</label>
+                        </th>
+
+                        <th>
+                            <label>Details</label>
+                        </th>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+
+        </div>
 
     </div>
-    
-    
-    
 
-    
-    
+
+
+
+
+
 
 </body>
 
