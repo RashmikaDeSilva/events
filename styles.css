@@ -5,7 +5,9 @@
 
 body{
     font-family:roboto;
+    margin:0;    
 }
+
 
 .dropbtn {
     background-color: rgb(232, 240, 238);
@@ -53,9 +55,23 @@ body{
 .dropdown:hover .dropbtn {background-color: #b6bbb6;}
 
 
+.heading{
+    display: grid;
+    background-color:rgb(223, 223, 223);
+    grid-template-columns:auto 56%;
+    color: rgb(110, 135, 146);
+    align-items: center;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.heading label{
+    font-size: 35px;
+}
+
+
 
 .topicTable {
-    
     border-collapse: collapse;
     width: 100%;
 }
@@ -67,6 +83,7 @@ tr {
 .topicTable td,
 .topicTable th {
     /* border: 1px solid rgb(98, 104, 105); */
+    
     text-align: left;
     padding: 8px;
 }
@@ -79,4 +96,8 @@ tr:nth-child(even) {
     .dropdown-toggle:checked+div{
         /* background-color:rgb(0, 217, 255); */
     }
+}
+
+.table_div{
+    padding: 10px;
 }
