@@ -217,4 +217,8 @@ $(document).ready(function () {
             processData(fetchedData);
         }
     });
+
+    setTimeout(()=>{
+        document.getElementById("loading").style.display = 'none'
+    }, 1000)
 });
