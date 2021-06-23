@@ -167,32 +167,27 @@ function refreshTable() {
     cleanTable();
     processData(fetchedData);
 }
-
 // filter button click event section
 function allData() {
     filterArray = [1, 1, 1, 1];
     refreshTable(); 
     return false;
 }
-
 function researchSeminar() {
     filterArray = [1, 0, 0, 0];
     refreshTable(); 
     return false;
 }
-
 function competitions() {
     filterArray = [0, 1, 0, 0];
     refreshTable(); 
     return false;
 }
-
 function conferences() {
     filterArray = [0, 0, 1, 0];
     refreshTable(); 
     return false;
 }
-
 function workshops() {
     filterArray = [0, 0, 0, 1];
     refreshTable(); 
