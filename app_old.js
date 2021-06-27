@@ -1,55 +1,109 @@
-// to filter the data
-//      1) add the tags to the selectedTagArr 
-//      2) call the refreshTable() function 
-
 // main variables
-var fetchedData = new Array();
-var selectedTagArr = ['workshop']; // contained the selected tags
-var tagArray = [];
+var fetchedData;
+var filterArray = [1, 1, 1, 1];
 
 // convert data to object
-function populateData(data) {
-    document.getElementById("loading").style.display = 'none'
-    document.getElementById("category").style.opacity = 1;
+function processData(data) {
     // console.log(data);
     // console.log(JSON.parse(data));
-    events = JSON.parse(data)['data'];
+    data = JSON.parse(data);
+    var research_talks = data['research_talk'];
+    var competitions = data['competition'];
+    var conferences = data['conference'];
+    var workshops = data['workshop'];
 
-    // varible to count the index
-    var index = 0;
+    var finalArray = [];
 
-    events.forEach((event) => {
-        // getting the tags
-        var tags = event['tags'].split(',');
-
-        // filling the data array
-        fetchedData.push({
-            'date': event['date'],
-            'time': event['time'],
-            'description': event['description'],
-            'type': "Research Talk",
-            'details': event["additional_info"],
-            'link_text': event["registration"] ? "registration" : "live stream",
-            'link': event['link'],
-            'visible': true,
-            'tags': tags,
-        });
-
-        // adding tags
-        tags.forEach((tag) => {
-            // console.log('tag: ' + tag);
-            if (tag in tagArray) {
-                tagArray[tag].push(index);
+    // adding talks to the final display array
+    if (filterArray[0]) {
+        research_talks.forEach((talk) => {
+            var typeTxt = '';
+            if (talk['registration'] == '1') {
+                typeTxt = 'Register';
             } else {
-                tagArray[tag] = [index]
+                typeTxt = 'Livestream';
             }
+
+            finalArray.push({
+                'date': talk['date'],
+                'time': talk['time'],
+                'description': talk['title'],
+                'type': "Research Talk",
+                'details': "Dummmy Details",
+                'link_text': typeTxt,
+                'link': talk['link'],
+            });
         });
+    }
 
-        index++;
-    });
+    // adding competitions to the final display array
+    if (filterArray[1]) {
+        competitions.forEach((competition) => {
+            var typeTxt = '';
+            if (competition['registration'] == '1') {
+                typeTxt = 'Register';
+            } else {
+                typeTxt = 'More Info';
+            }
 
-    // sorting the data array
-    fetchedData.sort((a, b) => {
+            finalArray.push({
+                'date': competition['date'],
+                'time': competition['time'],
+                'description': competition['description'],
+                'type': "Competition",
+                'details': "Dummmy Details",
+                'link_text': typeTxt,
+                'link': competition['link'],
+            });
+        });
+    }
+
+    // adding conferences to the final display array
+    if (filterArray[2]) {
+        conferences.forEach((conference) => {
+            var typeTxt = '';
+            if (conference['registration'] == '1') {
+                typeTxt = 'Register';
+            } else {
+                typeTxt = 'Live Stream';
+            }
+
+            finalArray.push({
+                'date': conference['date'],
+                'time': conference['time'],
+                'description': conference['topic'],
+                'type': "Conference",
+                'details': "Dummmy Details",
+                'link_text': typeTxt,
+                'link': conference['link'],
+            });
+        });
+    }
+
+    // adding conferences to the final display array
+    if (filterArray[3]) {
+        workshops.forEach((workshop) => {
+            var typeTxt = '';
+            if (workshop['registration'] == '1') {
+                typeTxt = 'Register';
+            } else {
+                typeTxt = 'More Info';
+            }
+
+            finalArray.push({
+                'date': workshop['date'],
+                'time': workshop['time'],
+                'description': workshop['description'],
+                'type': "Work Shop",
+                'details': "Dummmy Details",
+                'link_text': typeTxt,
+                'link': workshop['link'],
+            });
+        });
+    }
+
+    // sorting the final array
+    finalArray.sort((a, b) => {
         if (a.date < b.date) {
             return -1;
         } else if (a.date > b.date) {
@@ -63,11 +117,11 @@ function populateData(data) {
         }
     });
 
-    // console.log(fetchedData);
-    // console.log(tagArray);
+    // console.log(finalArray);
 
-    // filling the html table
-    fillTable();
+    fillTable(finalArray);
+    document.getElementById("loading").style.display = 'none'
+    document.getElementById("category").style.opacity = 1;
 }
 
 // add a row to the table
@@ -79,6 +133,7 @@ function addRow(rowData, colType) {
     row.insertCell(0).innerHTML = ''
     row.children[0].className = 'type ' + rowData['type'].replaceAll(' ', '');
     // console.log(rowData['type'].replaceAll(' ', ''))
+
 
     row.insertCell(1).innerHTML = rowData['type'];
     row.insertCell(2).innerHTML = rowData['date'];
@@ -98,30 +153,27 @@ function addEmptyRow() {
 }
 
 // loop and add all the data
-function fillTable() {
+function fillTable(tableData) {
     let refWeekNo = 0;
     // selecting the col type (odd or even)
     let count = 0;
 
     // get the first week of the table
-    if (fetchedData.length > 0) {
-        var mydate = new Date(fetchedData[0]['date']);
+    if (tableData.length > 0) {
+        var mydate = new Date(tableData[0]['date']);
         refWeekNo = mydate.getWeek();
     }
 
-    fetchedData.forEach((tableRow) => {
-        if (tableRow['visible']) {
-            // check the week no
-            var mydate = new Date(tableRow['date']);
-            var tmpWeek = mydate.getWeek();
-            // adding weekly separators
-            if (refWeekNo != tmpWeek) {
-                addEmptyRow();
-                refWeekNo = tmpWeek;
-            }
-            count++;
-            addRow(tableRow, count % 2);
+    tableData.forEach((tableRow) => {
+        // check the week no
+        var mydate = new Date(tableRow['date']);
+        var tmpWeek = mydate.getWeek();
+        if (refWeekNo != tmpWeek) {
+            addEmptyRow();
+            refWeekNo = tmpWeek;
         }
+        count++;
+        addRow(tableRow, count%2);
     });
 }
 
@@ -137,26 +189,8 @@ function cleanTable() {
 
 // refresh table
 function refreshTable() {
-    // removing the visibility of all the tags
-    fetchedData.forEach((event) => {
-        event['visible'] = false;
-    });
-
-    // console.log(tagArray);
-
-    // enable the visibility of the filtered tags
-    selectedTagArr.forEach((tag) => {
-        // console.log(tagArray[tag]);
-        if (tagArray[tag]) {
-            tagArray[tag].forEach((eventIndex) => {
-                fetchedData[eventIndex]['visible'] = true;
-            });
-        }
-    });
-
-    // clean and fill the table
     cleanTable();
-    fillTable();
+    processData(fetchedData);
 }
 // filter button click event section
 function allData() {
@@ -228,10 +262,11 @@ $(document).ready(function () {
 
     $.ajax({
         type: "GET",
-        url: "https://drawing-room-disadv.000webhostapp.com/api/getDataNew.php?date=" + today,
+        url: "https://drawing-room-disadv.000webhostapp.com/api/getData.php?date=" + today,
         dataType: "text",
         success: function (data) {
-            populateData(data);
+            fetchedData = data;
+            processData(fetchedData);
         }
     });
 
