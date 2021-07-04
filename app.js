@@ -80,14 +80,17 @@ function addRow(rowData, colType) {
 
     row.insertCell(0).innerHTML = ''
     row.children[0].className = 'type ' + rowData['type'].replaceAll(' ', '');
-    // console.log(rowData['type'].replaceAll(' ', ''))
+    // console.log(rowData['type'].replaceAll(' ', ''))    
+
+    var popupCode = "document.getElementById('popup_content').innerHTML = '" + rowData['details'] + "'; location.href='#popup1';";
+    console.log(rowData['details']);
 
     row.insertCell(1).innerHTML = rowData['type'];
     row.insertCell(2).innerHTML = rowData['date'];
     row.insertCell(3).innerHTML = rowData['time'] ? rowData['time'] : "TBA";
     row.insertCell(4).innerHTML = rowData['description'];
     row.insertCell(5).innerHTML = '<a target="_blank" href=' + rowData['link'] + '>' + ((rowData['link_text'] == "Register") ? '<i class="fas fa-link"></i>' : '<i class="fas fa-satellite-dish"></i>') + '</a>'
-    row.insertCell(6).innerHTML = '<button type="button" onclick="" class = "info_button">Additional Info</button>'
+    row.insertCell(6).innerHTML = '<button type="button" onclick="' + popupCode + '" class = "info_button">Additional Info</button>'
     // console.log((rowData['link_text'] == "Register" ? 1 : 2))
 }
 

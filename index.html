@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="./types.css">
     <link rel="stylesheet" href="./loadingScreen.css">
     <link rel="stylesheet" href="./whatsapp.css">
+    <link rel="stylesheet" href="./popup.css">
+    <link rel="stylesheet" href="./tag.css">
     <script src="https://kit.fontawesome.com/f1c65451e4.js" crossorigin="anonymous"></script>
 </head>
 
@@ -25,15 +27,20 @@
         <label>Events Calendar</label>
     </div>
 
-    
+    <div class = "tag RTalk">
+        <label >Research Talk </label>
+    </div>
 
+    
+    
     <div id="category" class="category">
         <div class="selected-item">
             <p>Category : <span>All</span></p>
         </div>
-
+        
+        
         <div class="dropdown">
-            <span class="selLabel">Select Category</span>
+            <span class="selLabel">Add Category</span>
             <input type="hidden" name="cd-dropdown">
             <ul class="dropdown-list">
                 <li data-value="1">
@@ -99,8 +106,15 @@
 
     </div>
 
-
-
+    <div id="popup1" class="overlay">
+        <div class="popup">
+            <h2>More Info...</h2>
+            <a class="close" href="#">&times;</a>
+            <div class="content" id='popup_content'>
+                Sample Data
+            </div>
+        </div>
+    </div>
 
 
 
