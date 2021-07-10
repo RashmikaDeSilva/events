@@ -111,7 +111,7 @@ function addRow(rowData, colType) {
     // popupCode = popupCode.replace('\"', '\\"');
     // console.log(popupCode);
 
-    row.insertCell(0).innerHTML = ' <div class = "table_tag_hold"><div class = "table_tag researchtalk">Res talk</div> <div class = "table_tag workshop">workshop</div>  <div class = "table_tag conference">conference</div>  <div class = "table_tag competition">competition</div>     </div>';
+    row.insertCell(0).innerHTML = ' <div class = "table_tag_hold"><div class = "table_tag researchtalk">Resear talk</div> <div class = "table_tag workshop">Workshop</div>  <div class = "table_tag conference">conference</div>  <div class = "table_tag competition">Competition</div>     </div>';
     row.insertCell(1).innerHTML = rowData['date'];
     row.insertCell(2).innerHTML = rowData['time'] ? rowData['time'] : "TBA";
     row.insertCell(3).innerHTML = rowData['description'];
