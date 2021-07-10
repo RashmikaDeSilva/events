@@ -40,7 +40,7 @@ function populateData(allText) {
             lines.push(tarr);
         }
     }
-    console.log(lines);
+    // console.log(lines);
 
     // varible to count the index
     var index = 0;
@@ -118,7 +118,7 @@ function addRow(rowData, colType) {
     row.insertCell(4).innerHTML = '<a target="_blank" href=' + rowData['link'] + '>' + ((rowData['link_text'] == "Register") ? '<i class="fas fa-link" style = "font-size:20px"></i>' : '<i class="fas fa-satellite-dish" style = "font-size:20px"></i>') + '</a>'
     row.insertCell(5).innerHTML = "<button type='button' onclick='" + popupCode + "' class = 'info_button'>Additional Info</button>"
     // console.log((rowData['link_text'] == "Register" ? 1 : 2))
-    console.log(rowData);
+    // console.log(rowData);
 }
 
 // add an empty row
