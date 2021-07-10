@@ -105,23 +105,20 @@ function addRow(rowData, colType) {
 
     row.className = colType ? 'even': 'odd'
 
-    row.insertCell(0).innerHTML = ''
-    row.children[0].className = 'type ' + rowData['type'].replaceAll(' ', '');
-    // console.log(rowData['type'].replaceAll(' ', ''))    
-
+    
     var popupCode = 'document.getElementById("popup_content").innerHTML = "' + rowData["details"].replaceAll('\"', '\\"') + '"; location.href="#popup1";';
     popupCode = popupCode.replace(/(\r\n|\n|\r)/gm, "");
     // popupCode = popupCode.replace('\"', '\\"');
     // console.log(popupCode);
 
-    row.insertCell(1).innerHTML = rowData['type'];
-    row.insertCell(2).innerHTML = rowData['date'];
-    row.insertCell(3).innerHTML = rowData['time'] ? rowData['time'] : "TBA";
-    row.insertCell(4).innerHTML = rowData['description'];
-    row.insertCell(5).innerHTML = '<a target="_blank" href=' + rowData['link'] + '>' + ((rowData['link_text'] == "Register") ? '<i class="fas fa-link"></i>' : '<i class="fas fa-satellite-dish"></i>') + '</a>'
-    row.insertCell(6).innerHTML = "<button type='button' onclick='" + popupCode + "' class = 'info_button'>Additional Info</button>"
+    row.insertCell(0).innerHTML = ' <div class = "table_tag_hold"><div class = "table_tag researchtalk">Res talk</div> <div class = "table_tag workshop">workshop</div>  <div class = "table_tag conference">conference</div>  <div class = "table_tag competition">competition</div>     </div>';
+    row.insertCell(1).innerHTML = rowData['date'];
+    row.insertCell(2).innerHTML = rowData['time'] ? rowData['time'] : "TBA";
+    row.insertCell(3).innerHTML = rowData['description'];
+    row.insertCell(4).innerHTML = '<a target="_blank" href=' + rowData['link'] + '>' + ((rowData['link_text'] == "Register") ? '<i class="fas fa-link" style = "font-size:20px"></i>' : '<i class="fas fa-satellite-dish" style = "font-size:20px"></i>') + '</a>'
+    row.insertCell(5).innerHTML = "<button type='button' onclick='" + popupCode + "' class = 'info_button'>Additional Info</button>"
     // console.log((rowData['link_text'] == "Register" ? 1 : 2))
-    console.log(rowData.details);
+    console.log(rowData);
 }
 
 // add an empty row

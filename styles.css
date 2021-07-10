@@ -65,8 +65,9 @@ tr {
     background:rgb(204, 211, 212);
 }
 
-tr:hover :first-child{
-    opacity: 0.5;
+tr:hover{
+    /* opacity: 0.8; */
+    color:rgb(23, 86, 138);
 }
 
 /* tr:nth-child(even):hover {
