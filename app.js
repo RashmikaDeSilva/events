@@ -121,6 +121,7 @@ function addRow(rowData, colType) {
     row.insertCell(5).innerHTML = '<a target="_blank" href=' + rowData['link'] + '>' + ((rowData['link_text'] == "Register") ? '<i class="fas fa-link"></i>' : '<i class="fas fa-satellite-dish"></i>') + '</a>'
     row.insertCell(6).innerHTML = "<button type='button' onclick='" + popupCode + "' class = 'info_button'>Additional Info</button>"
     // console.log((rowData['link_text'] == "Register" ? 1 : 2))
+    console.log(rowData.details);
 }
 
 // add an empty row
