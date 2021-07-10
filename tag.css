@@ -1,41 +1,56 @@
 .tag{
-    display: grid;
-    grid-template-columns: auto 15%;
+    display:grid;
     height: 28px;
-    width: 130px;
-    padding:4px;
-    background: rgb(223, 222, 222);
-    border-radius: 5px;
+    width: auto;
+    padding-left:10px;
+    padding-right:10px;
+    background: rgb(243, 240, 240);
+    border: 2px solid rgb(130, 173, 180);
+    color:rgb(130, 173, 180);
+    border-radius: 20px;
     margin-right: 10px;
-}
-
-.tag div{
-    background-color:rgb(99, 16, 207);
-    border-radius: 5px;
-    margin-left: 2px;
-    font-size: 0px;
-    transition-duration:200ms;
-}
-
-.tag:hover{
-    background: rgb(227, 233, 231);
-    
-}
-
-.tag:hover div{
-    font-size: 17px;
-    border-radius: 30px;
-    background-color: rgba(0, 255, 255, 0) !important;
-    
+    align-items: center;
+    transition-duration: 500ms;
 }
 
 
 
-
-.tag.RTalk div{
-    background-color:rgb(99, 16, 207);
+.tag.All {
+    border: 2px solid rgb(44, 71, 75);
+    color:rgb(46, 89, 95);
+    box-shadow: 0px 0px 10px 0 rgba(6, 80, 58, 0.192);
 }
 
-.tag.workshop div{
-    background-color:rgb(207, 16, 73);
+.tag.All:hover {
+    color:rgb(10, 30, 32);
+    border: 2px solid rgb(10, 26, 29);
+    box-shadow: 0px 0px 5px 0 rgba(4, 65, 46, 0.568);
+}
+
+.tag.RTalk:hover {
+    color:rgb(255, 255, 255);
+    font-weight: bold;;
+    border: 2px solid rgb(11, 145, 255);
+    background-color: rgb(11, 145, 255);
+}
+
+.tag.workshop:hover {
+    color:rgb(255, 255, 255);
+    font-weight: bold;;
+    border: 2px solid rgb(255, 11, 84);
+    background-color: rgb(255, 11, 84);
+}
+
+.tag.conference:hover {
+    color:rgb(255, 255, 255);
+    font-weight: bold;;
+    border: 2px solid rgb(5, 224, 96);
+    background-color: rgb(5, 224, 96);
+}
+
+.tag.competition:hover {
+    color:rgb(255, 255, 255);
+    font-weight: bold;;
+    border: 2px solid rgb(158, 224, 5);
+    background-color: rgb(158, 224, 5);
 }
