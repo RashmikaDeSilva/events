@@ -26,7 +26,11 @@ function populateData(allText) {
     for (var i=1; i<allTextLines.length; i++) {
         var data = allTextLines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
         console.log(data);
-        console.log(data.length);
+        // console.log(data.length);
+
+        // break if a null line gets
+        if (data == null) break;
+
         if (data.length == headers.length) {
 
             var tarr = [];
