@@ -1,6 +1,8 @@
 // to filter the data
 //      1) add the tags to the selectedTagArr 
 //      2) call the refreshTable() function 
+//for csv reading
+
 
 // main variables
 var fetchedData = new Array();
@@ -8,17 +10,42 @@ var selectedTagArr = ['workshop']; // contained the selected tags
 var tagArray = [];
 
 // convert data to object
-function populateData(data) {
+function populateData(allText) {
     document.getElementById("loading").style.display = 'none'
     document.getElementById("category").style.opacity = 1;
     // console.log(data);
     // console.log(JSON.parse(data));
-    events = JSON.parse(data)['data'];
+    // events = JSON.parse(data)['data'];
+
+    // load data from the csv file
+    var allTextLines = allText.split(/\r\n|\n/);
+    // console.log(allTextLines);
+    var headers = allTextLines[0].split(',');
+    var lines = [];
+
+    for (var i=1; i<allTextLines.length; i++) {
+        var data = allTextLines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+        console.log(data);
+        // console.log(data.length);
+
+        // break if a null line gets
+        if (data == null) break;
+
+        if (data.length == headers.length) {
+
+            var tarr = [];
+            for (var j=0; j<headers.length; j++) {
+                tarr[headers[j]] = data[j].replace(/['"]+/g, '');
+            }
+            lines.push(tarr);
+        }
+    }
+    console.log(lines);
 
     // varible to count the index
     var index = 0;
 
-    events.forEach((event) => {
+    lines.forEach((event) => {
         // getting the tags
         var tags = event['tags'].split(',');
 
@@ -82,16 +109,19 @@ function addRow(rowData, colType) {
     row.children[0].className = 'type ' + rowData['type'].replaceAll(' ', '');
     // console.log(rowData['type'].replaceAll(' ', ''))    
 
-    var popupCode = "document.getElementById('popup_content').innerHTML = '" + rowData['details'] + "'; location.href='#popup1';";
-    console.log(rowData['details']);
+    var popupCode = 'document.getElementById("popup_content").innerHTML = "' + rowData["details"].replaceAll('\"', '\\"') + '"; location.href="#popup1";';
+    popupCode = popupCode.replace(/(\r\n|\n|\r)/gm, "");
+    // popupCode = popupCode.replace('\"', '\\"');
+    // console.log(popupCode);
 
     row.insertCell(1).innerHTML = rowData['type'];
     row.insertCell(2).innerHTML = rowData['date'];
     row.insertCell(3).innerHTML = rowData['time'] ? rowData['time'] : "TBA";
     row.insertCell(4).innerHTML = rowData['description'];
     row.insertCell(5).innerHTML = '<a target="_blank" href=' + rowData['link'] + '>' + ((rowData['link_text'] == "Register") ? '<i class="fas fa-link"></i>' : '<i class="fas fa-satellite-dish"></i>') + '</a>'
-    row.insertCell(6).innerHTML = '<button type="button" onclick="' + popupCode + '" class = "info_button">Additional Info</button>'
+    row.insertCell(6).innerHTML = "<button type='button' onclick='" + popupCode + "' class = 'info_button'>Additional Info</button>"
     // console.log((rowData['link_text'] == "Register" ? 1 : 2))
+    console.log(rowData.details);
 }
 
 // add an empty row
@@ -233,7 +263,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: "GET",
-        url: "https://drawing-room-disadv.000webhostapp.com/api/getDataNew.php?date=" + today,
+        url: "data/data.csv",
         dataType: "text",
         success: function (data) {
             populateData(data);
