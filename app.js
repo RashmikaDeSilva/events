@@ -1,6 +1,8 @@
 // to filter the data
 //      1) add the tags to the selectedTagArr 
 //      2) call the refreshTable() function 
+//for csv reading
+
 
 // main variables
 var fetchedData = new Array();
@@ -8,17 +10,38 @@ var selectedTagArr = ['workshop']; // contained the selected tags
 var tagArray = [];
 
 // convert data to object
-function populateData(data) {
+function populateData(allText) {
     document.getElementById("loading").style.display = 'none'
     document.getElementById("category").style.opacity = 1;
     // console.log(data);
     // console.log(JSON.parse(data));
-    events = JSON.parse(data)['data'];
+    // events = JSON.parse(data)['data'];
+
+    // load data from the csv file
+    var allTextLines = allText.split(/\r\n|\n/);
+    // console.log(allTextLines);
+    var headers = allTextLines[0].split(',');
+    var lines = [];
+
+    for (var i=1; i<allTextLines.length; i++) {
+        var data = allTextLines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
+        console.log(data);
+        console.log(data.length);
+        if (data.length == headers.length) {
+
+            var tarr = [];
+            for (var j=0; j<headers.length; j++) {
+                tarr[headers[j]] = data[j].replace(/['"]+/g, '');
+            }
+            lines.push(tarr);
+        }
+    }
+    console.log(lines);
 
     // varible to count the index
     var index = 0;
 
-    events.forEach((event) => {
+    lines.forEach((event) => {
         // getting the tags
         var tags = event['tags'].split(',');
 
@@ -235,7 +258,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: "GET",
-        url: "https://drawing-room-disadv.000webhostapp.com/api/getDataNew.php?date=" + today,
+        url: "data/data.csv",
         dataType: "text",
         success: function (data) {
             populateData(data);
