@@ -96,10 +96,16 @@ tr:hover :first-child{
     overflow:scroll;
 }
 
-.category{
+/* .category{
     
     transform: translateX(-14%) scale(0.7);
     opacity: 0;
     width: 100vw;
     transition-duration: 1s;
+} */
+
+.category{
+    display:flex;
+    flex-direction:row;
+    padding: 10px;
 }

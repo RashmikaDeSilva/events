@@ -1,5 +1,41 @@
-.RTalk{
-    height: 10px;
-    width:200px;
-    background: red;
+.tag{
+    display: grid;
+    grid-template-columns: auto 15%;
+    height: 28px;
+    width: 130px;
+    padding:4px;
+    background: rgb(223, 222, 222);
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+.tag div{
+    background-color:rgb(99, 16, 207);
+    border-radius: 5px;
+    margin-left: 2px;
+    font-size: 0px;
+    transition-duration:200ms;
+}
+
+.tag:hover{
+    background: rgb(227, 233, 231);
+    
+}
+
+.tag:hover div{
+    font-size: 17px;
+    border-radius: 30px;
+    background-color: rgba(0, 255, 255, 0) !important;
+    
+}
+
+
+
+
+.tag.RTalk div{
+    background-color:rgb(99, 16, 207);
+}
+
+.tag.workshop div{
+    background-color:rgb(207, 16, 73);
 }
