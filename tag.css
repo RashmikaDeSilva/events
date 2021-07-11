@@ -33,29 +33,29 @@
 .tag.RTalk:hover {
     color:rgb(255, 255, 255);
     font-weight: bold;
-    border: 2px solid rgb(11, 145, 255);
-    background-color: rgb(11, 145, 255);
+    border: 2px solid #2a9d8f;
+    background-color: #2a9d8f;
 }
 
 .tag.workshop:hover {
     color:rgb(255, 255, 255);
-    font-weight: bold;;
-    border: 2px solid rgb(255, 11, 84);
-    background-color: rgb(255, 11, 84);
+    font-weight: bold;
+    border: 2px solid #e63946;
+    background-color: #e63946;
 }
 
 .tag.conference:hover {
     color:rgb(255, 255, 255);
     font-weight: bold;;
-    border: 2px solid rgb(5, 224, 96);
-    background-color: rgb(5, 224, 96);
+    border: 2px solid #023e7d;
+    background-color: #023e7d;
 }
 
 .tag.competition:hover {
     color:rgb(255, 255, 255);
     font-weight: bold;;
-    border: 2px solid rgb(158, 224, 5);
-    background-color: rgb(158, 224, 5);
+    border: 2px solid #80b918;
+    background-color: #80b918;
 }
 
 
@@ -63,8 +63,8 @@
 .table_tag{
 
     display: grid;
-    height:20px;
-    width:fit-content;
+    height:40px;
+    width:40px;
     padding-left:10px;
     padding-right:10px;
     border-radius: 20px;
@@ -78,19 +78,25 @@
 }
 
 .table_tag.researchtalk{
-    background:  rgb(11, 145, 255);
+    background:  #2a9d8f;
 }
 .table_tag.workshop{
-    background:  rgb(223, 15, 78);
+    background:  #e63946;
+}
+.table_tag.conferece{
+    background:  #023e7d;
+}
+.table_tag.competition{
+    background:  #80b918;
 }
 
 
 .table_tag_hold{
     display:flex;
-    flex-direction:column;
+    flex-direction:row;
     width:fit-content;
     padding:3px;
     gap: 3px;
-    background-color:rgb(255, 255, 255);
+    /* background-color:rgb(81, 89, 90); */
     border-radius: 30px;
 }

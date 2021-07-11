@@ -111,14 +111,31 @@ function addRow(rowData, colType) {
     // popupCode = popupCode.replace('\"', '\\"');
     // console.log(popupCode);
 
-    row.insertCell(0).innerHTML = ' <div class = "table_tag_hold"><div class = "table_tag researchtalk">Resear talk</div> <div class = "table_tag workshop">Workshop</div>  <div class = "table_tag conference">conference</div>  <div class = "table_tag competition">Competition</div>     </div>';
+    let div =  document.createElement("div");
+    div.className = "table_tag_hold"
+
+    
+      
+    rowData['tags'].forEach((tag)=>{
+        tag = tag.replace(/ /g,'')
+        let child = document.createElement("div")
+        child.className = "table_tag " + tag
+        child.textContent = (tag == 'competition')? "CM":
+                            (tag == 'workshop')?"W":
+                            (tag == 'conferece')?"CN":
+                            (tag == 'researchtalk')?"RT":"null";
+        div.appendChild(child)
+        console.log(tag.replace(/ /g,''))
+    })
+    
+    row.insertCell(0).appendChild(div);
     row.insertCell(1).innerHTML = rowData['date'];
     row.insertCell(2).innerHTML = rowData['time'] ? rowData['time'] : "TBA";
     row.insertCell(3).innerHTML = rowData['description'];
     row.insertCell(4).innerHTML = '<a target="_blank" href=' + rowData['link'] + '>' + ((rowData['link_text'] == "Register") ? '<i class="fas fa-link" style = "font-size:20px"></i>' : '<i class="fas fa-satellite-dish" style = "font-size:20px"></i>') + '</a>'
     row.insertCell(5).innerHTML = "<button type='button' onclick='" + popupCode + "' class = 'info_button'>Additional Info</button>"
     // console.log((rowData['link_text'] == "Register" ? 1 : 2))
-    console.log(rowData);
+    // console.log(rowData);
 }
 
 // add an empty row
@@ -271,16 +288,16 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function () {
+// $(document).ready(function () {
 
-    $(".selLabel").click(function () {
-        $('.dropdown').toggleClass('active');
-    });
+//     $(".selLabel").click(function () {
+//         $('.dropdown').toggleClass('active');
+//     });
 
-    $(".dropdown-list li").click(function () {
-        $('.selLabel').text($(this).text());
-        $('.dropdown').removeClass('active');
-        $('.selected-item p span').text($('.selLabel').text());
-    });
+//     $(".dropdown-list li").click(function () {
+//         $('.selLabel').text($(this).text());
+//         $('.dropdown').removeClass('active');
+//         $('.selected-item p span').text($('.selLabel').text());
+//     });
 
-});
+// });
