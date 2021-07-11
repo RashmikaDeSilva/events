@@ -77,14 +77,16 @@ tr:hover{
 @media only screen and (max-width: 750px) {
    .heading{
        width: 100%;
-       padding-top: 10%;
-        flex-direction: column;
-        overflow: hidden;
+       padding-top: 5%;
+       border-bottom: 10px solid rgb(203, 211, 214);
     }
    
    .heading label {
     padding: 0;
-    margin-top: 1%;   
+   }
+
+   #logo{
+       visibility: hidden;
    }
 }
 
@@ -105,3 +107,9 @@ tr:hover{
     transition-duration: 1s;
 } */
 
+#logo{
+    position: absolute;
+    left:40px;
+    top:30px;
+    transform:scale(1.2); 
+}
