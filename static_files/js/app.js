@@ -125,9 +125,9 @@ function addRow(rowData, colType) {
         let child = document.createElement("div")
         child.className = "table_tag " + tag
         child.textContent = (tag == 'competition') ? "CM" :
-            (tag == 'workshop') ? "W" :
-                (tag == 'conferece') ? "CN" :
-                    (tag == 'researchtalk') ? "RT" : "null";
+                            (tag == 'workshop') ? "W" :
+                            (tag == 'conference') ? "CN" :
+                            (tag == 'researchtalk') ? "RT" : "null";
         div.appendChild(child)
 
     })
@@ -319,7 +319,7 @@ function selectAll(){
     document.getElementById("cn_tag").className = "tag conference"
 
     //TODO correct the conferece to confetrence
-    selectedTagArr = ["research talk", "workshop", "conferece",  "competition"]
+    selectedTagArr = ["research talk", "workshop", "conference",  "competition"]
     refreshTable();
     selectedTagArr = [];
 }
@@ -337,7 +337,7 @@ document.getElementById("w_tag").addEventListener('click', () => {
 
 document.getElementById("cn_tag").addEventListener('click', () => {
     //TODO correct the conferece to confetrence
-    toggleTag("conferece", "cn_tag")
+    toggleTag("conference", "cn_tag")
 })
 
 document.getElementById("cm_tag").addEventListener('click', () => {
