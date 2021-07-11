@@ -6,7 +6,7 @@
 
 // main variables
 var fetchedData = new Array();
-var selectedTagArr = ['workshop']; // contained the selected tags
+var selectedTagArr = []; // contained the selected tags
 var tagArray = [];
 
 // convert data to object
@@ -23,9 +23,8 @@ function populateData(allText) {
     var headers = allTextLines[0].split(',');
     var lines = [];
 
-    for (var i=1; i<allTextLines.length; i++) {
+    for (var i = 1; i < allTextLines.length; i++) {
         var data = allTextLines[i].match(/(".*?"|[^",\s]+)(?=\s*,|\s*$)/g);
-        console.log(data);
         // console.log(data.length);
 
         // break if a null line gets
@@ -34,16 +33,13 @@ function populateData(allText) {
         if (data.length == headers.length) {
 
             var tarr = [];
-            for (var j=0; j<headers.length; j++) {
+            for (var j = 0; j < headers.length; j++) {
                 tarr[headers[j]] = data[j].replace(/['"]+/g, '');
             }
             lines.push(tarr);
         }
     }
     // console.log(lines);
-
-    // varible to count the index
-    var index = 0;
 
     lines.forEach((event) => {
         // getting the tags
@@ -62,17 +58,7 @@ function populateData(allText) {
             'tags': tags,
         });
 
-        // adding tags
-        tags.forEach((tag) => {
-            // console.log('tag: ' + tag);
-            if (tag in tagArray) {
-                tagArray[tag].push(index);
-            } else {
-                tagArray[tag] = [index]
-            }
-        });
-
-        index++;
+        console.log(tags);
     });
 
     // sorting the data array
@@ -90,6 +76,24 @@ function populateData(allText) {
         }
     });
 
+    // varible to count the index
+    var index = 0;
+
+    fetchedData.forEach((data) => {
+        // console.log(data.tags);
+        // adding tags
+        data.tags.forEach((tag) => {
+            // console.log('tag: ' + tag);
+            if (tag in tagArray) {
+                tagArray[tag].push(index);
+            } else {
+                tagArray[tag] = [index]
+            }
+        });
+
+        index++;
+    });
+
     // console.log(fetchedData);
     // console.log(tagArray);
 
@@ -103,31 +107,31 @@ function addRow(rowData, colType) {
     var rowCount = table.rows.length;
     var row = table.insertRow(rowCount);
 
-    row.className = colType ? 'even': 'odd'
+    row.className = colType ? 'even' : 'odd'
 
-    
+
     var popupCode = 'document.getElementById("popup_content").innerHTML = "' + rowData["details"].replaceAll('\"', '\\"') + '"; location.href="#popup1";';
     popupCode = popupCode.replace(/(\r\n|\n|\r)/gm, "");
     // popupCode = popupCode.replace('\"', '\\"');
     // console.log(popupCode);
 
-    let div =  document.createElement("div");
+    let div = document.createElement("div");
     div.className = "table_tag_hold"
 
-    
-      
-    rowData['tags'].forEach((tag)=>{
-        tag = tag.replace(/ /g,'')
+
+
+    rowData['tags'].forEach((tag) => {
+        tag = tag.replace(/ /g, '')
         let child = document.createElement("div")
         child.className = "table_tag " + tag
-        child.textContent = (tag == 'competition')? "CM":
-                            (tag == 'workshop')?"W":
-                            (tag == 'conferece')?"CN":
-                            (tag == 'researchtalk')?"RT":"null";
+        child.textContent = (tag == 'competition') ? "CM" :
+            (tag == 'workshop') ? "W" :
+                (tag == 'conferece') ? "CN" :
+                    (tag == 'researchtalk') ? "RT" : "null";
         div.appendChild(child)
-        console.log(tag.replace(/ /g,''))
+
     })
-    
+
     row.insertCell(0).appendChild(div);
     row.insertCell(1).innerHTML = rowData['date'];
     row.insertCell(2).innerHTML = rowData['time'] ? rowData['time'] : "TBA";
@@ -191,13 +195,15 @@ function refreshTable() {
         event['visible'] = false;
     });
 
-    // console.log(tagArray);
+    console.log('tagarray', tagArray);
+    console.log('fetchedData', fetchedData);
 
     // enable the visibility of the filtered tags
     selectedTagArr.forEach((tag) => {
         // console.log(tagArray[tag]);
         if (tagArray[tag]) {
             tagArray[tag].forEach((eventIndex) => {
+                console.log(eventIndex)
                 fetchedData[eventIndex]['visible'] = true;
             });
         }
@@ -206,32 +212,6 @@ function refreshTable() {
     // clean and fill the table
     cleanTable();
     fillTable();
-}
-// filter button click event section
-function allData() {
-    filterArray = [1, 1, 1, 1];
-    refreshTable();
-    return false;
-}
-function researchSeminar() {
-    filterArray = [1, 0, 0, 0];
-    refreshTable();
-    return false;
-}
-function competitions() {
-    filterArray = [0, 1, 0, 0];
-    refreshTable();
-    return false;
-}
-function conferences() {
-    filterArray = [0, 0, 1, 0];
-    refreshTable();
-    return false;
-}
-function workshops() {
-    filterArray = [0, 0, 0, 1];
-    refreshTable();
-    return false;
 }
 
 // get the week no
@@ -301,3 +281,65 @@ $(document).ready(function () {
 //     });
 
 // });
+document.getElementById("all_tag").addEventListener('click', () => {
+    selectAll();
+})
+
+
+
+// this function gets the tagname and the HTML id of the tag 
+// pushes the tagName into the selected tag array and call the
+// refreshTable() to execute the filtering
+function toggleTag(tagName, tagId) {
+
+    if (selectedTagArr.includes(tagName)) {
+        selectedTagArr.splice(selectedTagArr.indexOf(tagName), 1)
+    }else {
+        selectedTagArr.push(tagName);
+    }
+    
+    document.getElementById("all_tag").className = "tag All"
+    document.getElementById(tagId).classList.toggle("active")
+    
+    console.log(selectedTagArr)
+    
+    if(selectedTagArr.length == 0){
+        selectAll();
+    }else{
+        refreshTable()
+    }
+    
+}
+
+function selectAll(){
+    document.getElementById("all_tag").classList.toggle("active")
+    document.getElementById("r_tag").className = "tag RTalk"
+    document.getElementById("w_tag").className = "tag workshop"
+    document.getElementById("cm_tag").className = "tag competition"
+    document.getElementById("cn_tag").className = "tag conference"
+
+    //TODO correct the conferece to confetrence
+    selectedTagArr = ["research talk", "workshop", "conferece",  "competition"]
+    refreshTable();
+    selectedTagArr = [];
+}
+
+
+
+document.getElementById("r_tag").addEventListener('click', () => {
+    toggleTag("research talk", "r_tag")
+})
+
+document.getElementById("w_tag").addEventListener('click', () => {
+    toggleTag("workshop", "w_tag")
+})
+
+
+document.getElementById("cn_tag").addEventListener('click', () => {
+    //TODO correct the conferece to confetrence
+    toggleTag("conferece", "cn_tag")
+})
+
+document.getElementById("cm_tag").addEventListener('click', () => {
+    toggleTag("competition", "cm_tag")
+})

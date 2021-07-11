@@ -10,48 +10,60 @@
     border-radius: 20px;
     margin-right: 10px;
     align-items: center;
-    transition-duration: 500ms;
+    transition-duration: 200ms;
 }
 
 
+@keyframes color_anim {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.tag:hover{
+    box-shadow: 0px 0px 10px 0 rgba(14, 46, 36, 0.582);
+}
 
 .tag.All {
     border: 2px solid rgb(44, 71, 75);
     color:rgb(46, 89, 95);
-    box-shadow: 0px 0px 10px 0 rgba(6, 80, 58, 0.192);
 }
 
 
 
-.tag.All:hover {
+.tag.All.active {
     color:rgb(222, 243, 245);
     font-weight: bold;
     border: 2px solid rgb(25, 28, 31);
     background-color: rgb(25, 32, 37);
 }
 
-.tag.RTalk:hover {
+
+.tag.RTalk.active{
     color:rgb(255, 255, 255);
     font-weight: bold;
     border: 2px solid #2a9d8f;
     background-color: #2a9d8f;
 }
 
-.tag.workshop:hover {
+.tag.workshop.active {
     color:rgb(255, 255, 255);
     font-weight: bold;
     border: 2px solid #e63946;
     background-color: #e63946;
 }
 
-.tag.conference:hover {
+.tag.conference.active {
     color:rgb(255, 255, 255);
     font-weight: bold;;
     border: 2px solid #023e7d;
     background-color: #023e7d;
 }
 
-.tag.competition:hover {
+.tag.competition.active {
     color:rgb(255, 255, 255);
     font-weight: bold;;
     border: 2px solid #80b918;
@@ -100,3 +112,4 @@
     /* background-color:rgb(81, 89, 90); */
     border-radius: 30px;
 }
+
