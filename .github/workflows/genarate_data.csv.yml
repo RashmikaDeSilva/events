@@ -34,5 +34,5 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add --all
-          git commit -m "Data csv genarated"
-          git push
+          git commit --allow-empty -m "Data csv genarated"
+          git push -f origin main

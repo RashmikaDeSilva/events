@@ -40,7 +40,7 @@ function populateData(allText) {
             lines.push(tarr);
         }
     }
-    console.log(lines);
+    // console.log(lines);
 
     // varible to count the index
     var index = 0;
