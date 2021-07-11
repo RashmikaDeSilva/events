@@ -30,6 +30,17 @@ body{
     align-items: start;
 }
 
+.footer{
+    display: flex;
+    width:100vw;
+    background-color:rgb(223, 223, 223);
+
+    color: rgb(33, 47, 53);
+    padding-top: 3%;
+    padding-bottom: 3%;
+    align-items: start;
+}
+
 .heading label{
     padding-left:40%;
     font-size: 35px;
@@ -99,13 +110,6 @@ tr:hover{
     overflow:scroll;
 }
 
-/* .category{
-    
-    transform: translateX(-14%) scale(0.7);
-    opacity: 0;
-    width: 100vw;
-    transition-duration: 1s;
-} */
 
 #logo{
     position: absolute;
