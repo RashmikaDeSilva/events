@@ -8,6 +8,7 @@
     border: 2px solid rgb(130, 173, 180);
     color:rgb(130, 173, 180);
     border-radius: 20px;
+    margin-top: 10px;
     margin-right: 10px;
     align-items: center;
     transition-duration: 200ms;
@@ -113,3 +114,20 @@
     border-radius: 30px;
 }
 
+.category{
+    display:flex;
+    flex-wrap: wrap;
+    flex-direction:row;
+    padding: 10px;
+    margin-top: 50px;
+}
+
+@media only screen and (max-width: 750px) {
+  .category{
+      margin-top:10px;
+  }
+  .tag{
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+ }

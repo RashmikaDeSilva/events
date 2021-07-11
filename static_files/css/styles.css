@@ -105,9 +105,3 @@ tr:hover{
     transition-duration: 1s;
 } */
 
-.category{
-    display:flex;
-    flex-direction:row;
-    padding: 10px;
-    margin-top: 50px;
-}
