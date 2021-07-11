@@ -1,6 +1,6 @@
 @font-face{
     font-family: "roboto";
-    src: url('./fonts/RobotoCondensed-Regular.ttf');
+    src: url('../../fonts/RobotoCondensed-Regular.ttf');
 }
 
 body{
@@ -69,7 +69,9 @@ tr {
     background:rgb(204, 211, 212);
 }
 
-
+.emptyRow{
+    background:rgb(255, 255, 255);
+}
 
 .topicTable td,
 .topicTable th {

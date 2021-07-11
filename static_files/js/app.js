@@ -58,7 +58,7 @@ function populateData(allText) {
             'tags': tags,
         });
 
-        console.log(tags);
+        // console.log(tags);
     });
 
     // sorting the data array
@@ -146,8 +146,10 @@ function addRow(rowData, colType) {
 function addEmptyRow() {
     var table = document.getElementById("eventTable");
     var rowCount = table.rows.length;
+    
     var row = table.insertRow(rowCount);
-    row.insertCell(0).innerHTML = ''
+    row.insertCell().innerHTML = ''
+    row.className =  'emptyRow'
 }
 
 // loop and add all the data
@@ -203,7 +205,7 @@ function refreshTable() {
         // console.log(tagArray[tag]);
         if (tagArray[tag]) {
             tagArray[tag].forEach((eventIndex) => {
-                console.log(eventIndex)
+                // console.log(eventIndex)
                 fetchedData[eventIndex]['visible'] = true;
             });
         }
@@ -301,7 +303,7 @@ function toggleTag(tagName, tagId) {
     document.getElementById("all_tag").className = "tag All"
     document.getElementById(tagId).classList.toggle("active")
     
-    console.log(selectedTagArr)
+    // console.log(selectedTagArr)
     
     if(selectedTagArr.length == 0){
         selectAll();
