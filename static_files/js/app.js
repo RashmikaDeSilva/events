@@ -26,7 +26,8 @@ function compDate(date) {
 // convert data to object
 function populateData(allText) {
     document.getElementById("loading").style.display = 'none'
-    
+    document.getElementById('sub_container').style.opacity = 1;
+
     var src = $('#heading').css('background-image');
     var url = src.match(/\((.*?)\)/)[1].replace(/('|")/g,'');
     console.log(url);
