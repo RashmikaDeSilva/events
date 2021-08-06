@@ -3,12 +3,12 @@ import json
 
 # csv file name
 csvPath = 'FormResponses.csv'
-jsonPath = 'events_011.json'
+
 
 keys = ["tags", "date", "time", "description", "additional_info", "registration", "link"]
 
   
-def makeJSON(csvPath, jsonPath):
+def makeJSON(csvPath):
     
     data = {} 
 
@@ -20,22 +20,26 @@ def makeJSON(csvPath, jsonPath):
     with open(csvPath, 'r', encoding='utf-8') as csvfile:
         # creating a csv reader object
         csvreader = list(csv.DictReader(csvfile))
-        # print(csvreader)
+        print(len(csvreader))
       
-        for i in range(1,8):
-            key = keys[i-1]
-            data[key] = list(csvreader[0].values())[i]
-    
-    with open(jsonPath, 'w', encoding='utf-8') as jsonf:
-        jsonf.write(json.dumps(data))
+        for j in range(len(csvreader)):
+            for i in range(1,8):
+                key = keys[i-1]
+                data[key] = list(csvreader[j].values())[i]
+            
+            jsonPath = str(hash(list(csvreader[j].values())[0]))
+            jsonfile = jsonPath + ".json"
+            # print(jsonfile)
+            with open(jsonfile, 'w', encoding='utf-8') as jsonf:
+                jsonf.write(json.dumps(data))
 
 
 
      
-        print(csvreader)
+        # print(csvreader)
     
 
-makeJSON(csvPath, jsonPath)
+makeJSON(csvPath)
     
 
  
